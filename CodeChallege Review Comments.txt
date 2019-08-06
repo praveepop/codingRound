@@ -1,0 +1,28 @@
+1 Flight Ticket Booking 
+
+Driver Object initiated wrongly due to which chromedriver was detecting properly
+ElementLocator of Destination field is wrong updated id of it.
+
+2. HotelBooking
+
+Page object model used, but constructor and page factory jar file was not imported 
+ALso not create initElements method, which create all WebElements
+
+3.SigninTest
+Frame was not handled after clciking on Signin Button which encounters the error.
+
+
+Design wise:
+Page Object model  can be implemented properly, which reduces the maintenance easily
+CommonMethods is  missing which makes code lengthy, creation of xommon method will reduce to code length and will be easy for reusability.
+
+Ex
+setDriverpath, wait method and is element present 
+Instead of wait command, webDriver wait can be used, which executed fast, as it move to next step once the specific condition.
+
+Objects can be maintained in a separate class file for each page(for easy maintenance)
+
+
+
+
+
