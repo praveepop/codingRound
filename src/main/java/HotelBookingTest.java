@@ -1,32 +1,42 @@
-import com.sun.javafx.PlatformUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
+import com.sun.javafx.PlatformUtil;
+
 public class HotelBookingTest {
+	private WebDriver driver;
+	
+	public HotelBookingTest(){
+	setDriverPath();
+    driver = new ChromeDriver();
+	 //This initElements method will create all WebElements
 
-    WebDriver driver = new ChromeDriver();
+	  PageFactory.initElements(driver, this);
 
+	    }
     @FindBy(linkText = "Hotels")
-    private WebElement hotelLink;
+    public  WebElement hotelLink;
 
     @FindBy(id = "Tags")
-    private WebElement localityTextBox;
+    public WebElement localityTextBox;
 
     @FindBy(id = "SearchHotelsButton")
-    private WebElement searchButton;
+    public WebElement searchButton;
 
     @FindBy(id = "travellersOnhome")
-    private WebElement travellerSelection;
+    public WebElement travellerSelection;
 
     @Test
     public void shouldBeAbleToSearchForHotels() {
-        setDriverPath();
+        driver.manage().window().maximize();
 
         driver.get("https://www.cleartrip.com/");
+      //  driver.findElement(By.linkText("Hotels")).click();
         hotelLink.click();
 
         localityTextBox.sendKeys("Indiranagar, Bangalore");
@@ -38,7 +48,7 @@ public class HotelBookingTest {
 
     }
 
-    private void setDriverPath() {
+	private void setDriverPath() {
         if (PlatformUtil.isMac()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver");
         }
@@ -51,3 +61,4 @@ public class HotelBookingTest {
     }
 
 }
+
